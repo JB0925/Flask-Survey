@@ -24,7 +24,6 @@ def questions(num):
     if request.method == 'POST':
         if len(RESPONSES) != len(all_questions):
             RESPONSES.append(list(request.form.keys())[0])
-        print(RESPONSES)
         return redirect(url_for('questions', num=new_num+1))
     
     return render_template('questions.html', number=new_num, 
@@ -33,6 +32,4 @@ def questions(num):
 
 @app.route('/thanks', methods=['GET'])
 def thanks():
-    # if request.method == 'POST':
-    #     return redirect(url_for('start'))
     return render_template('thankyou.html')
