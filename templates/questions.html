@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/questions.css')}}">
+    <title>Survey</title>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container">
+            <div class="first-col">
+                <p>{{question}}</p>
+            </div>
+            <div class="second-col">
+                <div class="inner-container">
+                    <form action="/questions/{{number}}" method="POST">
+                        {% for answer in answers %}
+                        <label for="{{answer}}">{{answer}}</label>
+                        <input type="radio" name="{{answer}}" id="{{answer}}">
+                        {% endfor %}
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

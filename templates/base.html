@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <title>Survey</title>
+{% endblock %}
+<body>
+    <header>
+        <nav>
+            <h1>Welcome to Our Survey!</h1>
+            <ul>
+                <li><a href="{{ url_for('start') }}">Home</a></li>
+                <li><a href="{{ url_for('questions', num=0) }}">Survey</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <p>A Springboard student-made survery, &copy; 2021</p>
+    </footer>
+</body>
+</html>
