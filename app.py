@@ -45,7 +45,7 @@ def questions(num):
     correct question. This page appends the answer to the session['responses']
     list if there is a POST request, and just renders the page if there is a GET
     request."""
-    new_num = abs(int(num))
+    new_num = abs(int(num[0]))
     responses = session['responses']
 
     if len(responses) == len(all_questions):
@@ -58,7 +58,8 @@ def questions(num):
 
     if request.method == 'POST':
         answers = session['responses']
-        response = list(request.form.keys())[0]
+        print(request.form)
+        response = request.form['radio']
         answers.append(response)
         session['responses'] = answers
         return redirect(url_for('questions', num=new_num+1))

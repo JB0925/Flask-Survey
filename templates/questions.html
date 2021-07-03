@@ -22,7 +22,11 @@
                     <form action="/questions/{{number}}" method="POST">
                         {% for answer in answers %}
                         <label for="{{answer}}">{{answer}}</label>
-                        <input type="radio" name="{{answer}}" id="{{answer}}">
+                        {% if loop.index0 % 2 == 0 %}
+                        <input type="radio" name="radio" value="{{answer}}" id="{{answer}}" required>
+                        {% else %}
+                        <input type="radio" name="radio" value="{{answer}}" id="{{answer}}">
+                        {% endif %}
                         {% endfor %}
                         <button type="submit">Submit</button>
                     </form>
