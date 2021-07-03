@@ -23,3 +23,30 @@ a {
     text-decoration: none;
     width: 100%;
 }
+
+.results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 5px solid darkgray;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    border-right: 2.5px solid darkgray;
+    width: 50%;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    margin-right: 25%;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 15px;
+    width: 70%;
+}
+

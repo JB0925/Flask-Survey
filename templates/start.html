@@ -16,7 +16,10 @@
         <div class="container">
             <h1>{{survey.title}}</h1>
             <p>{{survey.instructions}}</p>
-            <button><a href="/questions/0">Start Survey</a></button>
+            <form action="/test" method="POST">
+                <button type="submit">Start Survey</button>
+                <!-- <button><a href="/questions/0">Start Survey</a></button> -->
+            </form>
         </div>
     </main>
 {% endblock %}
