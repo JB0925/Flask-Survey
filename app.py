@@ -1,5 +1,10 @@
+from urllib import parse
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_session import Session
+import os
+import sys
+topdir = os.path.join(os.path.dirname(__file__), '.')
+sys.path.append(topdir)
 
 from surveys import surveys
 
@@ -13,6 +18,10 @@ main_survey = surveys['satisfaction']
 all_questions = [question.question for question in main_survey.questions]
 all_answers = [question.choices for question in main_survey.questions]
 
+def parse_number(num):
+    if '.' in num:
+        num = num[0]
+    return abs(int(num))
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -45,7 +54,7 @@ def questions(num):
     correct question. This page appends the answer to the session['responses']
     list if there is a POST request, and just renders the page if there is a GET
     request."""
-    new_num = abs(int(num[0]))
+    new_num = parse_number(num)
     responses = session['responses']
 
     if len(responses) == len(all_questions):
@@ -58,7 +67,6 @@ def questions(num):
 
     if request.method == 'POST':
         answers = session['responses']
-        print(request.form)
         response = request.form['radio']
         answers.append(response)
         session['responses'] = answers
